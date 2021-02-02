@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Form, Button} from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Example() {
     return (
@@ -8,7 +10,7 @@ function Example() {
                 <div className="col-md-8">
                     <div className="card">
                         <div className="card-header">Example Component</div>
-
+                        <Button>Test</Button>
                         <div className="card-body">I'm an example component!</div>
                     </div>
                 </div>
@@ -19,6 +21,6 @@ function Example() {
 
 export default Example;
 
-if (document.getElementById('example')) {
-    ReactDOM.render(<Example />, document.getElementById('example'));
+if (document.getElementById('root')) {
+    ReactDOM.render(<Example />, document.getElementById('root'));
 }
