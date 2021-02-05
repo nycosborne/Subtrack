@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('react');
 });
 
+Route::get('/welcome', function () {
+    return view('welcome');
+});
 
 Auth::routes();
 

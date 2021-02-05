@@ -13,18 +13,18 @@ const Login = () => {
     }, [email]);
 
     useEffect(() => {
-        setEmail(password);
+        setpassword(password);
     }, [password]);
 
 
     const upDateEmail = (e) => {
         e.preventDefault();
-        setTerm(e.target.value);
+        setEmail(e.target.value);
     }
 
     const upDatePass = (e) => {
         e.preventDefault();
-        setTerm(e.target.value);
+        setpassword(e.target.value);
     }
 
 
@@ -44,9 +44,21 @@ const Login = () => {
 
         }
 
-        const submit = () => {
 
-            sendUserPass();
+
+        const submit = (e) => {
+
+            const cred = [ email, password];
+            e.preventDefault();
+            axios.defaults.withCredentials = true;
+            axios.get('/sanctum/csrf-cookie').then(response => {
+                axios.post('/login').then(response => {
+                    console.log(response);
+                });
+            });
+
+
+            console.log('sub');
         }
 
 
@@ -56,23 +68,23 @@ const Login = () => {
             <Form>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="search" placeholder="Search" value={email}
+                    <Form.Control type="" placeholder="" value={email}
                                   onChange={event => {
                                       if (event.key !== "Enter") {
                                           upDateEmail(event);
                                       }
-                                  }
+                                    }
                                   }
                                   onKeyPress={event => {
                                       if (event.key === "Enter") {
                                           submit(event);
                                       }
-                                  }
+                                    }
                                   }
                     />
 
-                    <Form.Label>Search</Form.Label>
-                    <Form.Control type="search" placeholder="Search" value={password}
+                    <Form.Label>Pass</Form.Label>
+                    <Form.Control type="" placeholder="" value={password}
                                   onChange={event => {
                                       if (event.key !== "Enter") {
                                           upDatePass(event);
@@ -86,9 +98,8 @@ const Login = () => {
                                   }
                                   }
                     />
-
+                    <Button onClick={submit}>Submit</Button>
                 </Form.Group>
-                <Button>Submit</Button>
             </Form>
 
         </div>

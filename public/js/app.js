@@ -2029,17 +2029,17 @@ var Login = function Login() {
     setEmail(email);
   }, [email]);
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
-    setEmail(password);
+    setpassword(password);
   }, [password]);
 
   var upDateEmail = function upDateEmail(e) {
     e.preventDefault();
-    setTerm(e.target.value);
+    setEmail(e.target.value);
   };
 
   var upDatePass = function upDatePass(e) {
     e.preventDefault();
-    setTerm(e.target.value);
+    setpassword(e.target.value);
   };
 
   var sendUserPass = /*#__PURE__*/function () {
@@ -2082,19 +2082,27 @@ var Login = function Login() {
     };
   }();
 
-  var submit = function submit() {
-    sendUserPass();
+  var submit = function submit(e) {
+    var cred = [email, password];
+    e.preventDefault();
+    (axios__WEBPACK_IMPORTED_MODULE_3___default().defaults.withCredentials) = true;
+    axios__WEBPACK_IMPORTED_MODULE_3___default().get('/sanctum/csrf-cookie').then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_3___default().post('/login').then(function (response) {
+        console.log(response);
+      });
+    });
+    console.log('sub');
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default.Group, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default.Group, {
         controlId: "formBasicEmail",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default.Label, {
           children: "Email"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default.Control, {
-          type: "search",
-          placeholder: "Search",
+          type: "",
+          placeholder: "",
           value: email,
           onChange: function onChange(event) {
             if (event.key !== "Enter") {
@@ -2107,10 +2115,10 @@ var Login = function Login() {
             }
           }
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default.Label, {
-          children: "Search"
+          children: "Pass"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default.Control, {
-          type: "search",
-          placeholder: "Search",
+          type: "",
+          placeholder: "",
           value: password,
           onChange: function onChange(event) {
             if (event.key !== "Enter") {
@@ -2122,10 +2130,11 @@ var Login = function Login() {
               submit(event);
             }
           }
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default, {
+          onClick: submit,
+          children: "Submit"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default, {
-        children: "Submit"
-      })]
+      })
     })
   });
 };
