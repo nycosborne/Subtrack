@@ -31,7 +31,7 @@ const Login = () => {
         const sendUserPass = async () => {
             const {data} = await axios.get('http://127.0.0.1:8000/api/countries', {
                 params: {
-                    query: debouncedTerm
+                    email: debouncedTerm
                 }
             });
 
@@ -48,11 +48,12 @@ const Login = () => {
 
         const submit = (e) => {
 
-            const cred = [ email, password];
+            const cred = {
+                email: email, password: password};
             e.preventDefault();
             axios.defaults.withCredentials = true;
             axios.get('/sanctum/csrf-cookie').then(response => {
-                axios.post('/login').then(response => {
+                axios.post('/login', {email: email, password:password} ).then(response => {
                     console.log(response);
                 });
             });

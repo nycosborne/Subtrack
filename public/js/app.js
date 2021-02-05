@@ -2053,7 +2053,7 @@ var Login = function Login() {
               _context.next = 2;
               return axios__WEBPACK_IMPORTED_MODULE_3___default().get('http://127.0.0.1:8000/api/countries', {
                 params: {
-                  query: debouncedTerm
+                  email: debouncedTerm
                 }
               });
 
@@ -2083,11 +2083,17 @@ var Login = function Login() {
   }();
 
   var submit = function submit(e) {
-    var cred = [email, password];
+    var cred = {
+      email: email,
+      password: password
+    };
     e.preventDefault();
     (axios__WEBPACK_IMPORTED_MODULE_3___default().defaults.withCredentials) = true;
     axios__WEBPACK_IMPORTED_MODULE_3___default().get('/sanctum/csrf-cookie').then(function (response) {
-      axios__WEBPACK_IMPORTED_MODULE_3___default().post('/login').then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_3___default().post('/login', {
+        email: email,
+        password: password
+      }).then(function (response) {
         console.log(response);
       });
     });
