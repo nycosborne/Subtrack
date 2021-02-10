@@ -28,44 +28,22 @@ const Login = () => {
     }
 
 
-        const sendUserPass = async () => {
-            const {data} = await axios.get('http://127.0.0.1:8000/api/countries', {
-                params: {
-                    email: debouncedTerm
-                }
-            });
 
-            if (typeof (data[0]) == 'undefined') {
-                setResults([]);
-            } else {
-                setResults(data);
-            }
-            console.log(data);
-
-        }
+    const submit = (e) => {
+        const cred = {email: email, password:password};
 
 
-
-        const submit = (e) => {
-
-            const cred = {
-                email: email, password: password};
-            e.preventDefault();
             axios.defaults.withCredentials = true;
             axios.get('/sanctum/csrf-cookie').then(response => {
-                axios.post('/login', {email: email, password:password} ).then(response => {
+                axios.post('/login', cred).then(response => {
                     console.log(response);
                 });
             });
-
-
-            console.log('sub');
         }
 
 
     return (
         <div>
-
             <Form>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email</Form.Label>
@@ -102,7 +80,7 @@ const Login = () => {
                     <Button onClick={submit}>Submit</Button>
                 </Form.Group>
             </Form>
-
+            <a></a>
         </div>
     );
 }

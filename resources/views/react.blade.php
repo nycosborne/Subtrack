@@ -20,7 +20,10 @@
         }
     </style>
 </head>
-<body id="root" class="antialiased">
+<body class="antialiased">
+<div id="root">
+
+</div>
 
 </body>
 <script type="text/javascript" src="../js/app.js"></script>
