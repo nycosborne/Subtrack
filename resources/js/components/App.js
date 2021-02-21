@@ -1,32 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import {Form, Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
-import Nav from "./Nav";
+import NavMenu from "./Nav/NavMenu";
 import Login from "./Login";
 import About from "./About";
 
 
 function App() {
     return (
-         <Router>
-            <div className="container"><ul>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <Link to="/about">About</Link>
-                </li>
-                <li>
-                    <Link to="/topics">Topics</Link>
-                </li>
-            </ul>
+        <Router>
+            <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <div className="card">
+                            <NavMenu/>
                             <Switch>
                                 <Route path="/about">
                                     <About/>
@@ -37,7 +26,6 @@ function App() {
                                 <Route path="/">
                                     <div className="col-md-8">
                                         <div className="card">
-                                            <About/>
                                             <Login/>
                                         </div>
                                     </div>
@@ -47,7 +35,7 @@ function App() {
                     </div>
                 </div>
             </div>
-         </Router>
+        </Router>
     );
 }
 

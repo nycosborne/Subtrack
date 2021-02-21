@@ -4,7 +4,7 @@ import axios from "axios";
 
 const About = () => {
 
-    const [ userId, setUserId] = useState(1);
+    const [ userId, setUserId] = useState(null);
 
     axios.defaults.withCredentials = true;
     axios.get('/sanctum/csrf-cookie').then(response => {

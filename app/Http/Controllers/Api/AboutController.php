@@ -12,11 +12,19 @@ class AboutController extends Controller
         $this->middleware('auth');
     }
 
-
+    public function index(){
+        return response('Index', 200)
+            ->header('Content-Type', 'text/plain');
+    }
 
 
     public function store(){
-        return response('Hello World', 200)
+        return response(auth()->user()->email, 200)
+            ->header('Content-Type', 'text/plain');
+    }
+
+    public function short(){
+        return response('short', 200)
             ->header('Content-Type', 'text/plain');
     }
 }

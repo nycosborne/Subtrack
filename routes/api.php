@@ -19,7 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
+Route::post('/about', [App\Http\Controllers\Api\AboutController::class, 'index']);
 
-//Route::resource('newemail', 'Api\EmailLeadsController');
-Route::resource('/about', App\Http\Controllers\Api\AboutController::class);
-//Route::resource('newemail', 'Api\EmailLeadsController');
