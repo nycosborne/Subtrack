@@ -1,8 +1,5 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {Container,Row,Col} from "react-bootstrap";
-
-
 const NavMenu = () => {
 
     return (
@@ -10,17 +7,22 @@ const NavMenu = () => {
 
             <Container>
                 <Row>
-                    <ul>
-                        <Col>
-                            <Link to="/">Homie</Link>
-                        </Col>
-                        <Col>
-                            <Link to="/about">About</Link>
-                        </Col>
-                        <Col>
-                            <Link to="/topics">Topics</Link>
-                        </Col>
-                    </ul>
+                    <Col>
+                        <Link to="/">Home</Link>
+                    </Col>
+                    <Col>
+                        <Link to="/about">About</Link>
+                    </Col>
+                    <Col>
+                        <Link to="/topics">Topics</Link>
+                    </Col>
+                    <Col>
+                        <Link to="/welcome">Welcome</Link>
+                    </Col>
+
+                    <Col>
+                        <Link to="/logout">Logout</Link>
+                    </Col>
                 </Row>
             </Container>
 
@@ -28,5 +30,8 @@ const NavMenu = () => {
         </div>
     );
 }
+
+
+import {Container, Row, Col} from "react-bootstrap";
 
 export default NavMenu;

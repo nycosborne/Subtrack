@@ -13,7 +13,7 @@ class AboutController extends Controller
     }
 
     public function index(){
-        return response('Index', 200)
+        return response(auth()->user()->email, 200)
             ->header('Content-Type', 'text/plain');
     }
 
