@@ -13,13 +13,13 @@ class AboutController extends Controller
     }
 
     public function index(){
-        return response(auth()->user()->email, 200)
+        return response(auth()->user()->name, 200)
             ->header('Content-Type', 'text/plain');
     }
 
 
-    public function store(){
-        return response(auth()->user()->email, 200)
+    public function user(){
+        return response(auth()->user(), 200)
             ->header('Content-Type', 'text/plain');
     }
 
